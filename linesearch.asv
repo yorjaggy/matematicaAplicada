@@ -11,7 +11,7 @@ function alfa = linesearch(t, y, xk, pk)
     r = @Ri;
     j = @Ji;
     
-    iteraciones = 100;
+    iteraciones = 50;
     for i=0:iteraciones
         a = 0.5^i;
         valor1 = feval(f,xk+a*pk,y,t);
@@ -23,11 +23,10 @@ function alfa = linesearch(t, y, xk, pk)
         valor2 = feval(f,xk,y,t)+1e-4*a*gxk'*pk;
         if valor1<valor2
             alfa = a;
-            disp(['Tomó ' num2str(i) ' iteraciones hallar la escala alfa'])
+            disp();
             return;
         end 
     end
-    disp(['Tomó ' num2str(iteraciones) ' iteraciones hallar la escala alfa'])
-    alfa = a;    
+    alfa = a;
 end
 

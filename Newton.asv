@@ -3,10 +3,8 @@ clear all;
 load_data;
 % punto inicial
 x0 = [-1;-2;1;-1];
-% Épsilon 1: Umbral del valor de la funcion objetivo
+% Épsilon 1: Umbral de la
 epsilon1 = 1e-6;
-% Épsilon 2: Umbral de proximidad entre magnitudes del gradiente
-epsilon2 = 1e-3;
 % vector de normas de los gradientes en cada K
 normaGk = [];
 % vector de todos los xk calculados

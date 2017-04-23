@@ -1,4 +1,4 @@
-function [gxk,hxk] = myfun(xk, t, y, metodo)
+function [gxk,hxk] = myfun(xk, uk, t, y, metodo)
     r = feval(@Ri, xk, t, y);
     J = feval(@Ji, xk, t);
     %Gradiente
@@ -10,7 +10,7 @@ function [gxk,hxk] = myfun(xk, t, y, metodo)
             hxk = J'*J;
         case 'levenberg'
             hng = J'*J;
-            hxk = hng + 1e-3*max(diag(hng))*eye(length(hng));
+            hxk = J'*J + 1e-3*max(J'*J);
     end
 
 end
