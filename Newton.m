@@ -16,7 +16,7 @@ iteraciones = 500;
 for k=1:iteraciones
     % Llamamos a myfun que calcula gxk y hxk que son el gradiente y la matriz
     % hessiana respectivamente
-    [gxk,hxk] = myfun(xk(:,k), t, y, 'levenberg');     
+    [gxk,hxk] = myfun(xk(:,k), t, y, 'newton');     
     
     pk = hxk\(-gxk);
 
