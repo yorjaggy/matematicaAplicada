@@ -6,11 +6,11 @@ x0 = [-1;-2;1;-1];
 % Épsilon 1: Umbral del valor de la funcion objetivo
 epsilon1 = 1e-6;
 % Épsilon 2: Umbral de proximidad entre magnitudes del gradiente
-epsilon2 = 1e-3;
+epsilon2 = 1e-6;
 % vector de todos los xk calculados
 xk(:,1) = x0;
 
-iteraciones = 500;
+iteraciones = 5000;
 for k=1:iteraciones
     % Llamamos a myfun que calcula gxk y hxk que son el gradiente y la matriz
     % hessiana respectivamente
@@ -25,15 +25,15 @@ for k=1:iteraciones
     xk(:,k+1) = xk(:,k) + ak*pk;
     
     % Hacer grafica del cálculo
-    figure(1)   
-        scatter(t,y, 'filled');
-        hold on
-        Mx = feval(@Mxt, xk(:,end-1), t);
-        plot(t, Mx);
-        xlabel('t');
-        ylabel('y');
-        title(['M(x,t) en la iteración ' num2str(k)]);
-        hold off
+%     figure(1)   
+%         scatter(t,y, 'filled');
+%         hold on
+%         Mx = feval(@Mxt, xk(:,end-1), t);
+%         plot(t, Mx);
+%         xlabel('t');
+%         ylabel('y');
+%         title(['M(x,t) en la iteración ' num2str(k)]);
+%         hold off
     
     % CONDICION 1 DE FIN DEL ALGORITMO:
     % la norma del gradiente es menor al epsilon
@@ -57,6 +57,16 @@ for k=1:iteraciones
 end
 
 pause(2)
+
+figure(1)   
+        scatter(t,y, 'filled');
+        hold on
+        %Mx = feval(@Mxt, xk, t);
+        plot(t, Mx);
+        xlabel('t');
+        ylabel('y');
+        title(['M(x,t) en la iteración ' num2str(k)]);
+        hold off
 
 figure(2)
     plot(normaGk);
